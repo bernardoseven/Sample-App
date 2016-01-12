@@ -7,7 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!-- ruby code <%#= render 'layouts/header' %> This code
+allow us to put different logic in separated file's, for example
+the logic for header and footer navbar's-->
 
+<!-- IMPORTANT! the file/'s we are rendering, must beging with _ 
+for example: _header.html.erb-->
+
+<!-- <%#= render 'layouts'/footer  %> -->
 <%= yield %>
 
 </body>
