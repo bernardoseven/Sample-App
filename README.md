@@ -33,6 +33,13 @@ string column's, name and email. Additionally creates an user_test.rb and user.r
 file's, and a migration file THAT IS A WAY TO ALTER THE DATABASE INCREMENTALLY, so that
 our data model can adapt to changing requirements
 We can run the command: rake db:migrate to finish the proccess detailed above. 
+Migrations are reversible, at list most of them, with the simple command:
+bundle exec rake db:rollback. In most case's when a developer has used the rollback command,
+the migration's file can be migrated again with rake db:migrate.
+
+To write a test for a vaild object, we will create an initially valid User model object
+@user, using the special setup method, wich automatically gets run before each test.
+Because @user is an instance variable, it's automatically available in all teh tests.
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
