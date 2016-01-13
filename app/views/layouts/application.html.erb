@@ -16,11 +16,16 @@ for example: _header.html.erb-->
 
 <!-- <%#= render 'layouts'/footer  %> -->
 
-<!-- Adding links would be like <a href="/pages/home">Home</a>, but that is not
+<!-- Adding links would be like <a href="/pages/about">About</a>, but that is not
 the Rails Way. Rails conventionally uses named routes wich involves code like this:
-<%#=  link_to "Home", home_path %> This way the code is more transparent and is more
+<%#=  link_to "About", about_path %> This way the code is more transparent and is more
 flexible, since we can change the definition of "home_path" and have the URL change
-everywhere "home_path" is used. -->
+everywhere "home_path" is used. To begin, we must change the code in routes.rb file
+transforming lines like " get '/something' => 'pages#something' " to 
+" get 'something' => 'pages#something' " 
+
+This code:<%#= link_to "Home",  root_path %> will link to the action "home" to the
+root_path, this one:<%#= link_to "About", about_path  %> will link to about_path-->
 <%= yield %>
 
 </body>
