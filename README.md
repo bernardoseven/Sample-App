@@ -27,6 +27,12 @@ will be to add a new user, but may we want associate a signup.html.erb url. We c
 accomplish this in the routes.rb file simple by putting
 the line: " get 'signup' => 'users#new' ".
 **********************************
+MODELING-USERS:
+rails generate model User name:string email:string, generates a database table with two
+string column's, name and email. Additionally creates an user_test.rb and user.rb model
+file's, and a migration file THAT IS A WAY TO ALTER THE DATABASE INCREMENTALLY, so that
+our data model can adapt to changing requirements
+We can run the command: rake db:migrate to finish the proccess detailed above. 
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
