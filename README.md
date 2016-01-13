@@ -39,7 +39,11 @@ the migration's file can be migrated again with rake db:migrate.
 
 To write a test for a vaild object, we will create an initially valid User model object
 @user, using the special setup method, wich automatically gets run before each test.
-Because @user is an instance variable, it's automatically available in all teh tests.
+Because @user is an instance variable, it's automatically available in all the tests.
+
+The most elementary validation is presence, wich simple verifies that a given 
+attribute is present. Our user has name and email, so we are going to verify that both
+attribute's are present writting tests.
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 

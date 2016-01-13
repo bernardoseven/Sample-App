@@ -12,4 +12,14 @@ class UserTest < ActiveSupport::TestCase
   test "should be valid" do
     assert @user.valid?
   end
+  
+  test "should be present" do
+    @user.name = " " # assign an empty string.
+    assert_not @user.valid? # this ensures that a blank string is not valid.
+  end
+  # Equal to the above test.
+  test "should do something" do
+    @user.email = " "
+    assert_not @user.valid?
+  end
 end
