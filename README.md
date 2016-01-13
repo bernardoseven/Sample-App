@@ -17,8 +17,8 @@ This snippet test's the requirements explained above
   end
 Then, if we want to check the new test passes, we can run the integration test with
 the command: bundle exec rake test:integration
-**********************************
-USERS:
+
+USERS(To improve layout understanding):
 rails generate controller Users new, generates a users controller with the new action
 (def new end), a new.html.erb view, a users_test controller, etc.
 However, we can arrange to asign a different html.erb file than users/new.html.erb to
