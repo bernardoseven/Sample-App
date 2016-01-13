@@ -28,8 +28,8 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   # ensures length email be database length compatible.
-  test "should do something" do
-    @user.email = "a" * 244 + "@exampe.com"
+  test "email should not be too long" do
+    @user.email = "a" * 256
     assert_not @user.valid?
   end
 end
