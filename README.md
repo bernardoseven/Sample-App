@@ -18,6 +18,16 @@ This snippet test's the requirements explained above
 Then, if we want to check the new test passes, we can run the integration test with
 the command: bundle exec rake test:integration
 **********************************
+USERS:
+rails generate controller Users new, generates a users controller with the new action
+(def new end), a new.html.erb view, a users_test controller, etc.
+However, we can arrange to asign a different html.erb file than users/new.html.erb to
+whatever html.erb we want. For example, the new action, following the REST principle
+will be to add a new user, but may we want associate a signup.html.erb url. We can 
+accomplish this in the routes.rb file simple by putting
+the line: " get 'signup' => 'users#new' ".
+**********************************
+**********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
 * Every proccess of programming that involves a bunch o files and logic, will be explained
