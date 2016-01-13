@@ -82,6 +82,10 @@ before save them to the databse. This is done adding the
 before_save { self.email = email.downcase } method to the user model.
 
 Secure password:
+The only requirement of has_secure_password to work his magic is for the corresponding
+model to have an attribute called password_digest.
+We can accomplish this with a single command: 
+rails generate migration add_password_digest_to_users password_digest:string
 
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
