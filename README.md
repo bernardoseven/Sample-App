@@ -45,6 +45,41 @@ The most elementary validation is presence, wich simple verifies that a given
 attribute is present. Our user has name and email, so we are going to verify that both
 attribute's are present writting tests.
 
+Validations for format purposes, like that a given email have a valid email format
+will be done after.
+
+Regular Expressions Table:
+Expression	Meaning
+/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i	full regex
+/	start of regex
+\A	match start of a string
+[\w+\-.]+	at least one word character, plus, hyphen, or dot
+@	literal “at sign”
+[a-z\d\-.]+	at least one letter, digit, hyphen, or dot
+\.	literal dot
+[a-z]+	at least one letter
+\z	match end of a string
+/	end of regex
+i	case-insensitive
+
+Uniqueness Validation:
+To enforce uniqueness of email addresses(so that we can use them as usrnames),
+we will be using the :unique option to the validates method.
+Despite all the method's writted to avoid user duplications, at the database level
+this could happen still. So we have to add an index to the database to enforce
+uniqueness at the database and user model level.
+We need to add new structure to the existing users migration, for that purpose,
+we need to create a migration directly using the migration generator.
+rails generate migration add_index_to_users_email, more steps are in the corresponding file.
+After the last step, we only have to migrate the database.
+
+If we run the tests again, them will fail due to the fixtures users.yml file, that 
+contains sample data for the test database. At this point we can erase the content of this
+file, leaving the comment #empty (tests are now passing).
+
+Some databases doesn't support uppercase emails, so we have to downcase the emails
+before save them to the databse. This is done adding the
+before_save { self.email = email.downcase } method to the user model.
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 

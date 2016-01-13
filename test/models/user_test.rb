@@ -32,4 +32,15 @@ class UserTest < ActiveSupport::TestCase
     @user.email = "a" * 256
     assert_not @user.valid?
   end
+  # here we want to make a user with the same email adrress as @user
+  # using @user.dup, wich creates a duplicate user with the same attributes. Since we
+  # then save the user, we have a duplicate user in the database, an should not be valid.
+  test "email addresses should be unique" do
+    duplicate_user = @user.dup
+    # line above upcase the email for skip problems like bRT@eXMample.com, this
+    # is reflected in the user model as well.
+    duplicate_user.email = @user.email.upcase
+    @user.save
+    assert_not duplicate_user.valid?
+  end
 end
