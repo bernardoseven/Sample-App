@@ -80,6 +80,9 @@ file, leaving the comment #empty (tests are now passing).
 Some databases doesn't support uppercase emails, so we have to downcase the emails
 before save them to the databse. This is done adding the
 before_save { self.email = email.downcase } method to the user model.
+
+Secure password:
+
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
