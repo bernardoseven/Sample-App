@@ -44,6 +44,7 @@ Because @user is an instance variable, it's automatically available in all the t
 The most elementary validation is presence, wich simple verifies that a given 
 attribute is present. Our user has name and email, so we are going to verify that both
 attribute's are present writting tests.
+
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
