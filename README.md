@@ -1,5 +1,5 @@
-Hello there, i'm making a whatsapp web clone from scratch for learning purpose.
-To Start:
+I'm making a whatsapp web clone(at least most of the features) 
+from scratch for learning purpose.
 **********************************
 LAYOUT:
 We can make an integration test to test if the links of the App are working
