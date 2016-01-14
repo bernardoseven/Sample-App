@@ -103,8 +103,16 @@ In rails we can create a new user into the app with a form called
 form_for, wich takes in an active record object and constructs a form using the 
 object's attributes. For this we must create an instance variable in def new method
 in user controller.
-
 **********************************
+Server:
+The server ruby on rails uses, WEBrick, is not good at handling traffic, so for 
+production purposes, we need to change the default server for another one pretty
+good at handling traffic. We are going to use Puma, an http server.
+We need to add a gem to the gemfile called puma, version 2.11.1.
+Then, we must run bundle install, after this, we need to create a file in 
+the config folder called puma.rb, i put the code in that file neccesary to run puma,
+the last step is to create a Procfile in the root directory of the app with some
+code too.
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
