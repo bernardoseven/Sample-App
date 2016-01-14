@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
       has_secure_password # adds the ability to save a securily hashed password_digest
       # attribute to the database. Additionally adds an authenticate method that returns the user
       # when the password is correct.
-      
+      validates :password, presence: true, length: { minimum: 6 } # validates password
+      # presence and length.
 end
