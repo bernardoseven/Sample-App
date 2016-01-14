@@ -1,5 +1,7 @@
 I'm making a whatsapp web clone(at least most of the features) 
 from scratch for learning purpose.
+Most of the comments and learning comes from the MAGNIFICENT BOOK "Ruby on Rails
+Tutorial" by MICHAEL HARTL, Codecademy exercises and a litle from teamtreehouse.
 **********************************
 LAYOUT:
 We can make an integration test to test if the links of the App are working
@@ -33,7 +35,7 @@ string column's, name and email. Additionally creates an user_test.rb and user.r
 file's, and a migration file THAT IS A WAY TO ALTER THE DATABASE INCREMENTALLY, so that
 our data model can adapt to changing requirements
 We can run the command: rake db:migrate to finish the proccess detailed above. 
-Migrations are reversible, at list most of them, with the simple command:
+Migrations are reversible, at least most of them, with the simple command:
 bundle exec rake db:rollback. In most case's when a developer has used the rollback command,
 the migration's file can be migrated again with rake db:migrate.
 
@@ -63,7 +65,7 @@ Expression	Meaning
 i	case-insensitive
 
 Uniqueness Validation:
-To enforce uniqueness of email addresses(so that we can use them as usrnames),
+To enforce uniqueness of email addresses(so that we can use them as usernames),
 we will be using the :unique option to the validates method.
 Despite all the method's writted to avoid user duplications, at the database level
 this could happen still. So we have to add an index to the database to enforce
