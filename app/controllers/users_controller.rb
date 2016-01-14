@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     # use an auxiliary method called user_params and use it in place of params[:user],
     # leaving the code like the one used above.
     if @user.save
+      flash[:success] = "Welcome to my app" # display a message when someone register was
+      # succefull, and visits a page for the first time. This code needs more code
+      # in the application.html.erb file.
       redirect_to @user # redirects to the user path, we could have used the equivalent
       # code: redirect_to user_url(@user).
     else

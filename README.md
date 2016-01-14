@@ -1,3 +1,5 @@
+THIS PROYECT IS IN DEVELOPMENT
+
 I'm making a whatsapp web clone(at least most of the features) 
 from scratch for learning purpose.
 Most of the comments and learning comes from the MAGNIFICENT BOOK "Ruby on Rails
@@ -101,6 +103,7 @@ In rails we can create a new user into the app with a form called
 form_for, wich takes in an active record object and constructs a form using the 
 object's attributes. For this we must create an instance variable in def new method
 in user controller.
+
 **********************************
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
