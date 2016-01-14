@@ -4,5 +4,6 @@ class UsersController < ApplicationController
   end
   
   def new
+    @user = User.new # instance variable for the form_for helper method.
   end
 end

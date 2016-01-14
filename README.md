@@ -96,6 +96,13 @@ validations on the virtual password and password_confirmation attributes.
 To get the tests passing again we just need to add a password and its confirmation to
 the tests.
 **********************************
+Sign-up:
+In rails we can create a new user into the app with a form called 
+form_for, wich takes in an active record object and constructs a form using the 
+object's attributes. For this we must create an instance variable in def new method
+in user controller.
+**********************************
+**********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
 * Every proccess of programming that involves a bunch o files and logic, will be explained
