@@ -6,7 +6,8 @@ class UserTest < ActiveSupport::TestCase
   # end
   # def setup gets run before each test.
   def setup
-    @user = User.new(name: "Example User", email: "user@example.com")
+    @user = User.new(name: "Example User", email: "user@example.com",
+    password: "foobar", password_confirmation: "foobar") # required fields for has_secure_password
   end
   # Verifies if the user is valid.
   test "should be valid" do

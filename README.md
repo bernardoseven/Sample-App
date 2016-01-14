@@ -86,7 +86,13 @@ The only requirement of has_secure_password to work his magic is for the corresp
 model to have an attribute called password_digest.
 We can accomplish this with a single command: 
 rails generate migration add_password_digest_to_users password_digest:string
-
+After the above line, it is all set to work, we just need to migrate de database.
+For all the things mentioned, we need a gem called bcrypt in the gemfile, we install this gem
+uncommenting the line where is bcrypt and executing bundle install.
+At this point the tests are failing, and the reason is because has_secure_password enforces
+validations on the virtual password and password_confirmation attributes.
+To get the tests passing again we just need to add a password and its confirmation to
+the tests.
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
