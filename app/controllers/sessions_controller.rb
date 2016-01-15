@@ -9,8 +9,6 @@ class SessionsController < ApplicationController
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)# as with log_in,
       redirect_back_or user # once again the helper does it all.
-      # defers the real work to the sessions Helper.
-      redirect_to user # rails convert this to the route for the user's profile page.
     else
       flash.now[:danger] = "Invalid email/password combination"
       render 'new'
