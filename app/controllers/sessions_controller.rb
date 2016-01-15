@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     # as authenticated in the tutorial, change as it is and works fine. //ignore this
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)# as with log_in,
+      redirect_back_or user # once again the helper does it all.
       # defers the real work to the sessions Helper.
       redirect_to user # rails convert this to the route for the user's profile page.
     else

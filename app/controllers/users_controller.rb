@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   def logged_in_user # takes advantage of sessions methods helper. This method is used
   # in the before_action filter at the top of this file(users controller).
     unless logged_in?
+      store_location
       flash[:danger] = "Please log in."
       redirect_to login_url
     end

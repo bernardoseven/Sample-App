@@ -41,4 +41,13 @@ module SessionsHelper
         session.delete(:user_id)
         @current_user = nil
     end
+    # redirects to stored location (or to the default).
+    def redirect_back_or(default)
+        redirect_to(session[:forwarding_url] || default)
+        session.delete(:forwarding_url)
+    end
+    # stores the URL trying to be accessed.
+    def store_location # we have to add this to logged_in_user method in users controller.
+        session[:forwarding_url] = request.url if request.get?
+    end
 end
