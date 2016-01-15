@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
         # the remember digest.
       end
       # returns true if the given token matches the digest.
-      def authenticated?(remember_token)
+      def authenticate?(remember_token)
         return false if remember_digest.nil? # fix the problem with permanent sessions
         # in different browsers.
         BCrypt::Password.new(remember_digest).is_password?(remember_token)

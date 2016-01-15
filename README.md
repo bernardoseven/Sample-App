@@ -158,6 +158,7 @@ After the cookies are set, we can retrieve the user in subsequent page views wit
 User.find_by(id: cookies.signed[:user_id]) where cookies.signed[:user_id] automatically
 decrypts the user id cookie. We can then use bcrypt to verify that cookies[:remember_token]
 matches the remember_digest already generated.
+There are some details to watch.
 **********************************
 **********************************
 **********************************
