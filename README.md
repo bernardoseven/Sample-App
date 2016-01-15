@@ -127,6 +127,8 @@ If we want to use this method in more than a place, we have to create a method i
 the sessions helper.
 note: temporary sessions are not vulnerable to any attack, but permanent cookies
 are vulnerable to a session hijacking attack(we must limit the info in that case).
+note: if we want to use bootstrap ability to make dropdown menus, we have to include
+bootstrap in the rails asset pipeline application.js, with the code: //= require bootstrap
 
 **********************************
 **********************************
