@@ -120,6 +120,14 @@ log-out.
 Unlike user form, sessions does not have a model, so we need to pass more information
 to the sessions form to give rails the ability to infer that the action of the
 form should be post.
+Rails has a session method and does not has a controller sessions. The code is
+session[:user_id] = user.id, this method creates a temporary cookie that expires 
+when the browser is closed by the user.
+If we want to use this method in more than a place, we have to create a method in
+the sessions helper.
+note: temporary sessions are not vulnerable to any attack, but permanent cookies
+are vulnerable to a session hijacking attack(we must limit the info in that case).
+
 **********************************
 **********************************
 **********************************
