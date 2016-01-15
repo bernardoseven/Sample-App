@@ -117,6 +117,9 @@ code too.
 Sessions:
 We are only going to use named routes handling get and post request to log-in and 
 log-out.
+Unlike user form, sessions does not have a model, so we need to pass more information
+to the sessions form to give rails the ability to infer that the action of the
+form should be post.
 **********************************
 **********************************
 **********************************
