@@ -37,4 +37,8 @@ class User < ActiveRecord::Base
       def authenticate?(remember_token)
         BCrypt::Password.new(remember_digest).is_password?(remember_token)
       end
+      # forgets a user. As always, the helper does the heavy work.
+      def forget
+        update_attribute(:remember_digest, nil)
+      end
 end
