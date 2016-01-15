@@ -160,6 +160,8 @@ decrypts the user id cookie. We can then use bcrypt to verify that cookies[:reme
 matches the remember_digest already generated.
 There are some details to watch.
 **********************************
+Requiring logged-in users:
+This is done with a before filter that use a before_action command.
 **********************************
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
