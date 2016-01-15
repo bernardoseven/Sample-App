@@ -15,8 +15,8 @@ module SessionsHelper
             @current_user ||= User.find_by(id: user_id)
         elsif (user_id = cookies.signed[:user_id])
            user = User.find_by(id: user_id)
-           if user && user.authenticate?(cookies[:remember_token]) # authenticate appeared
-    # as authenticated? in the tutorial, change as it is and works fine.
+           if user && user.authenticated?(cookies[:remember_token]) # authenticate appeared
+    # as authenticated? in the tutorial, change as it is and works fine. //Ignore this.
                log_in user
                @current_user = user
            end
