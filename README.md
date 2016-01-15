@@ -162,6 +162,9 @@ There are some details to watch.
 **********************************
 Requiring logged-in users:
 This is done with a before filter that use a before_action command.
+To redirect users trying to edit other user profile page, we have to define another
+method in users controller, and then used it with a before filter method like the one
+above.
 **********************************
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found

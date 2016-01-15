@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update] 
+  before_action :logged_in_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
   
   def show
     @user = User.find(params[:id]) # we retrieve the user from the database by id.
@@ -49,12 +50,17 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
     # this code makes posible the create method code to work.
   end
-  
+  # confirms a logged-in user.
   def logged_in_user # takes advantage of sessions methods helper. This method is used
   # in the before_action filter at the top of this file(users controller).
     unless logged_in?
       flash[:danger] = "Please log in."
       redirect_to login_url
     end
+  end
+  # confirms the correct user.
+  def correct_user # now we have to use this method with a before filter action on the top.
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
   end
 end
