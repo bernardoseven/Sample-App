@@ -114,6 +114,13 @@ the config folder called puma.rb, i put the code in that file neccesary to run p
 the last step is to create a Procfile in the root directory of the app with some
 code too.
 **********************************
+Sessions:
+We are only going to use named routes handling get and post request to log-in and 
+log-out.
+**********************************
+**********************************
+**********************************
+**********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
 * Every proccess of programming that involves a bunch o files and logic, will be explained
