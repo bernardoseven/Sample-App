@@ -129,7 +129,9 @@ note: temporary sessions are not vulnerable to any attack, but permanent cookies
 are vulnerable to a session hijacking attack(we must limit the info in that case).
 note: if we want to use bootstrap ability to make dropdown menus, we have to include
 bootstrap in the rails asset pipeline application.js, with the code: //= require bootstrap
-
+Login after signup:
+We need to add the ability to login a user inmediately after signing up, because other 
+wise would be strange. This is accomplish with a single line of code in users controller.
 **********************************
 **********************************
 **********************************
