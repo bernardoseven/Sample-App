@@ -133,6 +133,15 @@ Login after signup:
 We need to add the ability to login a user inmediately after signing up, because other 
 wise would be strange. This is accomplish with a single line of code in users controller.
 **********************************
+Persistent Sessions:
+We can make persistents sessions by putting a cookie in the browser. To start,
+we will add a remember_digest to the user model, that will be a hashed string that we'll
+use to compare the cookie with our record in the database.
+the code is: rails generate migration add_remember_digest_to_users remember_digest:string
+As allways we need to run db:migrate
+The plan is to make a rember_digest attribute in the db, with the migration this is 
+already solve, but for the cookie, we need to make a method "user.remember_token" that
+will be in the cookie and not in the db.
 **********************************
 **********************************
 **********************************

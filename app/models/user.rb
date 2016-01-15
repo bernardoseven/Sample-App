@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+      attr_accessor :remember_token # we create an accessible attribute.
       before_save { self.email = email.downcase } # Obvious behavior.
     # Curly braces are optional when passing hashes as the final argument
     # in a method.
@@ -18,5 +19,18 @@ class User < ActiveRecord::Base
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+      end
+      # Returns a random token. If we use the console, and puts literally 
+      # SecureRandom.urlsafe_base64, the console returns a random string that's almost
+      # imposible to be repeated with some other user's token.
+      def User.new_token
+        SecureRandom.urlsafe_base64
+      end
+      
+      def remember
+        self.remember_token = User.new_token # gives the unique hashed string to
+        # the current user.
+        update_attribute(:remember_digest, User.digest(remember_token)) # updates
+        # the remember digest.
       end
 end
