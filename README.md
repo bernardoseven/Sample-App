@@ -142,6 +142,22 @@ As allways we need to run db:migrate
 The plan is to make a rember_digest attribute in the db, with the migration this is 
 already solve, but for the cookie, we need to make a method "user.remember_token" that
 will be in the cookie and not in the db.
+An example of a persistent session(lasting 20 years) using a cookie would be:
+cookies[:remember_token] = {value: remember_token, expires: 20.years.from_now.utc}. This
+pattern is so common that Rails has a special permament method:
+cookies.permanent[:remember_token] = remember_token
+To store the user's id in the cookie, we could follow the pattern used with the session
+method using something like cookies[:user_id] = user.id, but this is insecure because 
+places the id as plain text. To avoid this problem, we'll use a signed cookie, wich securely
+encrypts the cookie before placing it on the browser like below:
+cookies.signed[:user_id] = user.id
+because we want the user id to be paired with the permanent remember token, we should
+make it permament as well, this can be done chaining the signed and permanent methods:
+cookies.permanent.signed[:user_id] = user.id
+After the cookies are set, we can retrieve the user in subsequent page views with code like:
+User.find_by(id: cookies.signed[:user_id]) where cookies.signed[:user_id] automatically
+decrypts the user id cookie. We can then use bcrypt to verify that cookies[:remember_token]
+matches the remember_digest already generated.
 **********************************
 **********************************
 **********************************
