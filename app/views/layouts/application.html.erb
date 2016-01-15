@@ -26,10 +26,11 @@ transforming lines like " get '/something' => 'pages#something' " to
 
 This code:<%#= link_to "Home",  root_path %> will link to the action "home" to the
 root_path, this one:<%#= link_to "About", about_path  %> will link to about_path-->
+<%= render 'layouts/header' %>
 <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %> <!-- This code is for making posible the flash method -->
 <%= yield %>
-
+<%= render 'layouts/footer' %>
 </body>
 </html>
