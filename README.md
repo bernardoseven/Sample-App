@@ -169,6 +169,8 @@ To friendly take a user where him want to go, for example, he wants to edit his 
 page and is not logged_in, we can make methods to store where he wants to go and take
 him to that place. This is done in the sessions helper.
 **********************************
+Admin-Attribute:
+Must add default: false in the migration file for this purpose.
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
