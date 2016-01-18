@@ -176,6 +176,8 @@ AccountActivation:
 We need to add three more columns to the users table, activation_digest, activated,
 activated_at.
 **********************************
+Mailer Method:
+
 **********************************
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
