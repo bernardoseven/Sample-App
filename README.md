@@ -172,6 +172,12 @@ him to that place. This is done in the sessions helper.
 Admin-Attribute:
 Must add default: false in the migration file for this purpose.
 **********************************
+AccountActivation:
+We need to add three more columns to the users table, activation_digest, activated,
+activated_at.
+**********************************
+**********************************
+**********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
 * in application.html.erb, pages_controller_test.rb, 
 * Every proccess of programming that involves a bunch o files and logic, will be explained

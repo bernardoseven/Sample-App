@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-      attr_accessor :remember_token # we create an accessible attribute.
+      # we create an accessible attribute.
+      attr_accessor :remember_token, :activation_token
       before_save { self.email = email.downcase } # Obvious behavior.
     # Curly braces are optional when passing hashes as the final argument
     # in a method.
@@ -42,5 +43,16 @@ class User < ActiveRecord::Base
       # forgets a user. As always, the helper does the heavy work.
       def forget
         update_attribute(:remember_digest, nil)
+      end
+      
+      private
+      # converts email to all lower case.
+      def downcase_email
+        self.email = email.downcase
+      end
+      # creates and assigns the activation token and digest.
+      def create_activation_digest
+        self.activation_token = User.new_token
+        self.activation_digest = User.digest(activation_token)
       end
 end
