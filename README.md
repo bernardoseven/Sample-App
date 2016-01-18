@@ -177,7 +177,8 @@ We need to add three more columns to the users table, activation_digest, activat
 activated_at.
 **********************************
 Mailer Method:
-
+We can generate mailer just like a controller, and once a mailer is created, rails
+generates two templates views, a plain text view and a html view.
 **********************************
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
