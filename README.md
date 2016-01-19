@@ -179,6 +179,11 @@ activated_at.
 Mailer Method:
 We can generate mailer just like a controller, and once a mailer is created, rails
 generates two templates views, a plain text view and a html view.
+To see the results of the templates defined in Listing 10.12 and Listing 10.13,
+we can use email previews, which are special URLs exposed by Rails to let us see 
+what our email messages look like. First, we need to add some configuration to
+our application’s development environment, as shown in Listing 10.14.
+
 **********************************
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
