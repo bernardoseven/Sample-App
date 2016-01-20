@@ -40,6 +40,12 @@ class User < ActiveRecord::Base
         # in different browsers.
         BCrypt::Password.new(remember_digest).is_password?(remember_token)
       end
+      # Returns true if the given token matches the digest.
+      def authenticated?(attribute, token)
+        digest = send("#{attribute}_digest")
+        return false if digest.nil?
+        BCrypt::Password.new(digest).is_password?(token)
+      end
       # forgets a user. As always, the helper does the heavy work.
       def forget
         update_attribute(:remember_digest, nil)
