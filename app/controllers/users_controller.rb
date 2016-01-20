@@ -25,12 +25,15 @@ class UsersController < ApplicationController
     # use an auxiliary method called user_params and use it in place of params[:user],
     # leaving the code like the one used above.
     if @user.save
-      log_in @user # logs in a user inmediately afther signing up.
-      flash[:success] = "Welcome to my app" # display a message when someone register was
+      #log_in @user # logs in a user inmediately afther signing up.
+      #flash[:success] = "Welcome to my app" # display a message when someone register was
       # succefull, and visits a page for the first time. This code needs more code
       # in the application.html.erb file.
-      redirect_to @user # redirects to the user path, we could have used the equivalent
+      #redirect_to @user # redirects to the user path, we could have used the equivalent
       # code: redirect_to user_url(@user).
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       render 'new'
     end
