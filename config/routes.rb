@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   root 'pages#home'
   get 'help' => 'pages#help'
   get 'about' => 'pages#about'
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
   resources :users # this line goal is to make the users resource a restful one,
   # this means, we can post, get, patch and delete users.
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   # **************************************
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
