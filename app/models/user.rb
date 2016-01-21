@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
       # we create an accessible attribute.
       attr_accessor :remember_token, :activation_token
-      before_save { self.email = email.downcase } # Obvious behavior.
+      before_save :downcase_email # Obvious behavior.
+      before_create :create_activation_digest
+      
     # Curly braces are optional when passing hashes as the final argument
     # in a method.
     # Parentheses on function calls are optional.
