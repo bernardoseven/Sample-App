@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       # in the application.html.erb file.
       #redirect_to @user # redirects to the user path, we could have used the equivalent
       # code: redirect_to user_url(@user).
-      UserMailer.account_activation(@user).deliver_now
+      @user.send_activation_email
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
     else
