@@ -212,6 +212,12 @@ using Heroku for deployment ImageMagick comes pre-installed in production.)
 On the cloud IDE, we can do this as follows:
 $ sudo apt-get update
 $ sudo apt-get install imagemagick --fix-missing
+The image uploader developed in Section 11.4.3 is good enough for development,
+but (as seen in the storage :file line in Listing 11.63) it uses the local filesystem 
+for storing the images, which isn’t a good practice in production.18 Instead,
+we’ll use a cloud storage service to store images separately from our application.19
+To configure our application to use cloud storage in production, 
+we’ll use the fog gem, as shown in Listing 11.64.
 **********************************
 **********************************
 **********************************
