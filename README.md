@@ -183,7 +183,16 @@ To see the results of the templates defined in Listing 10.12 and Listing 10.13,
 we can use email previews, which are special URLs exposed by Rails to let us see 
 what our email messages look like. First, we need to add some configuration to
 our application’s development environment, as shown in Listing 10.14.
-
+**********************************
+Image Upload:
+To handle an uploaded image and associate it with the Micropost model, we’ll use
+the CarrierWave image uploader. To get started, we need to include the carrierwave 
+gem in the Gemfile (Listing 11.55). For completeness, Listing 11.55 also includes
+the mini_magick and fog gems needed for image resizing (Section 11.4.3) and image 
+upload in production (Section 11.4.4).
+CarrierWave adds a Rails generator for creating an image uploader, which we’ll use
+to make an uploader for an image called picture.
+**********************************
 **********************************
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
