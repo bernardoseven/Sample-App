@@ -206,6 +206,12 @@ correspond to a built-in Rails validator. As a result, validating images require
 defining a custom validation, which we’ll call picture_size and define as shown
 in Listing 11.61. Note the use of validate (as opposed to validates) to call a
 custom validation.
+We’ll be resizing images using the image manipulation program ImageMagick, which we
+need to install on the development environment. (As we’ll see in Section 11.4.4, when 
+using Heroku for deployment ImageMagick comes pre-installed in production.) 
+On the cloud IDE, we can do this as follows:
+$ sudo apt-get update
+$ sudo apt-get install imagemagick --fix-missing
 **********************************
 **********************************
 **********************************
