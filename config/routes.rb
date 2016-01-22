@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
-
   root 'pages#home'
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get 'help' => 'pages#help'
   get 'about' => 'pages#about'
   get 'contact' => 'pages#contact'
