@@ -192,6 +192,11 @@ the mini_magick and fog gems needed for image resizing (Section 11.4.3) and imag
 upload in production (Section 11.4.4).
 CarrierWave adds a Rails generator for creating an image uploader, which we’ll use
 to make an uploader for an image called picture.
+Images uploaded with CarrierWave should be associated with a corresponding attribute
+in an Active Record model, which simply contains the name of the image file in 
+a string field.
+To add the required picture attribute to the Micropost model, we generate a migration and migrate the 
+development database.
 **********************************
 **********************************
 **********************************
