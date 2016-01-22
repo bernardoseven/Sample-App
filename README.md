@@ -200,6 +200,12 @@ development database.
 The way to tell CarrierWave to associate the image with a model is to use the
 mount_uploader method, which takes as arguments a symbol representing the attribute
 and the class name of the generated uploader.
+The second validation, which controls the size of the image, appears in the Micropost 
+model itself. In contrast to previous model validations, file size validation doesn’t
+correspond to a built-in Rails validator. As a result, validating images requires
+defining a custom validation, which we’ll call picture_size and define as shown
+in Listing 11.61. Note the use of validate (as opposed to validates) to call a
+custom validation.
 **********************************
 **********************************
 **********************************
