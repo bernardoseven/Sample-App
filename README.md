@@ -219,6 +219,113 @@ we’ll use a cloud storage service to store images separately from our applicat
 To configure our application to use cloud storage in production, 
 we’ll use the fog gem, as shown in Listing 11.64.
 **********************************
+SQL-Very important stuff:
+12.3.3 Subselects
+
+As hinted at in the last section, the feed implementation in
+Section 12.3.2 doesn’t scale well when the number of microposts in the feed is large,
+as would likely happen if a user were following, say, 5000 other users.
+In this section, we’ll reimplement the status feed in a way that scales better 
+with the number of followed users.
+The problem with the code in Section 12.3.2 is that following_ids pulls all the followed
+users’ ids into memory, and creates an array the full length of the followed users array.
+Since the condition in Listing 12.43 actually just checks inclusion in a set, there
+must be a more efficient way to do this, and indeed SQL is optimized for just such set
+operations. The solution involves pushing the finding of followed user ids into the
+database using a subselect.
+We’ll start by refactoring the feed with the slightly modified code in Listing 
+12.45.
+
+Listing 12.45: Using key-value pairs in the feed’s where method. green
+app/models/user.rb
+ class User < ActiveRecord::Base
+  .
+  .
+  .
+  # Returns a user's status feed.
+  def feed
+    Micropost.where("user_id IN (:following_ids) OR user_id = :user_id",
+                    following_ids: following_ids, user_id: id)
+  end
+  .
+  .
+  .
+end
+As preparation for the next step, we have replaced
+
+Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
+with the equivalent
+
+Micropost.where("user_id IN (:following_ids) OR user_id = :user_id",
+                following_ids: following_ids, user_id: id)
+The question mark syntax is fine, but when we want the same variable inserted in
+more than one place, the second syntax is more convenient.
+The above discussion implies that we will be adding a second occurrence of user_id in 
+the SQL query. In particular, we can replace the Ruby code
+
+following_ids
+with the SQL snippet
+
+following_ids = "SELECT followed_id FROM relationships
+                 WHERE  follower_id = :user_id"
+This code contains an SQL subselect, and internally the entire select
+for user 1 would look something like this:
+
+SELECT * FROM microposts
+WHERE user_id IN (SELECT followed_id FROM relationships
+                  WHERE  follower_id = 1)
+      OR user_id = 1
+This subselect arranges for all the set logic to be pushed into the database, which 
+is more efficient.
+With this foundation, we are ready for a more efficient feed implementation, as seen
+in Listing 12.46. Note that, because it is now raw SQL, the following_ids string
+is interpolated, not escaped.
+Listing 12.46: The final implementation of the feed. green
+app/models/user.rb
+ class User < ActiveRecord::Base
+  .
+  .
+  .
+  # Returns a user's status feed.
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+  end
+  .
+  .
+  .
+end
+This code has a formidable combination of Rails, Ruby, and SQL, but it does the job,
+and does it well:
+
+Listing 12.47: green
+$ bundle exec rake test
+Of course, even the subselect won’t scale forever. For bigger sites, you would probably
+need to generate the feed asynchronously using a background job, but such scaling 
+subtleties are beyond the scope of this tutorial.
+
+With the code in Listing 12.46, our status feed is now complete. Recall from Section 
+11.3.3 that the Home page already includes the feed; as a reminder, the home action 
+appears again in Listing 12.48. In Chapter 11, the result was only a proto-feed 
+(Figure 11.14), but with the implementation in Listing 12.46 as seen in Figure 12.23 
+the Home page now shows the full feed.
+
+Listing 12.48: The home action with a paginated feed.
+app/controllers/static_pages_controller.rb
+ class StaticPagesController < ApplicationController
+
+  def home
+    if logged_in?
+      @micropost  = current_user.microposts.build
+      @feed_items = current_user.feed.paginate(page: params[:page])
+    end
+  end
+  .
+  .
+  .
+end
 **********************************
 **********************************
 * All the relevant information, comments and tecniques i'm learning about rails can be found
