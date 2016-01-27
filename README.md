@@ -1,9 +1,5 @@
-THIS PROYECT IS IN DEVELOPMENT
-
-I'm making a whatsapp web clone(at least most of the features) 
-from scratch for learning purpose.
-Most of the comments and learning comes from the MAGNIFICENT BOOK "Ruby on Rails
-Tutorial" by MICHAEL HARTL, Codecademy exercises and a litle from teamtreehouse.
+MAGNIFICENT BOOK "Ruby on Rails
+Tutorial" by MICHAEL HARTL
 **********************************
 LAYOUT:
 We can make an integration test to test if the links of the App are working
@@ -327,11 +323,3 @@ app/controllers/static_pages_controller.rb
   .
 end
 **********************************
-**********************************
-* All the relevant information, comments and tecniques i'm learning about rails can be found
-* in application.html.erb, pages_controller_test.rb, 
-* Every proccess of programming that involves a bunch o files and logic, will be explained
-* here, in this file.
-- I need to think the database model and relationships and how this is going
-to be done for the most exact copy i can do in the level i'm currently programming.
-- Setting up
